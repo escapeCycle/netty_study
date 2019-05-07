@@ -1,0 +1,20 @@
+group 'com.xunhuan'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile (
+            "io.netty:netty-all:4.1.10.Final",
+            "net.spals.shaded:protobuf-java:3.3.1",
+            "com.google.protobuf:protobuf-java-util:3.3.1"
+    )
+}
