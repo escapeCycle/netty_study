@@ -17,6 +17,8 @@ public class MyServerHandler extends SimpleChannelInboundHandler<String> {
         System.out.println(ctx.channel().remoteAddress() + ", " + msg);
 
         ctx.channel().writeAndFlush("from server: " +UUID.randomUUID());
+        ctx.writeAndFlush("hello"); // 从当前handler的下一个开始流动，都是短路的方法，之前的不管
+        ctx.channel().writeAndFlush("hello"); // 出栈处理器的第一个开始流动
 
     }
 

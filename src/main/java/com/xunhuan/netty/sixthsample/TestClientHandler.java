@@ -16,6 +16,11 @@ public class TestClientHandler extends SimpleChannelInboundHandler<MyDataInfo.My
     }
 
     @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        super.channelRead(ctx, msg);
+    }
+
+    @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         int randomInt = new Random().nextInt(3);
         MyDataInfo.MyMessage myMessage;
