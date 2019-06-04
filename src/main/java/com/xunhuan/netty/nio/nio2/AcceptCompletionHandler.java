@@ -9,13 +9,13 @@ import java.nio.channels.CompletionHandler;
  * @Date: 2019/6/3 18:27
  * @Description:
  */
-public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSocketChannel,AsyncTimeServerHandler> {
+public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSocketChannel, AsyncTimeServerHandler> {
 
     @Override
     public void completed(AsynchronousSocketChannel result, AsyncTimeServerHandler attachment) {
-        attachment.asynchronousServerSocketChannel.accept(attachment,this);
+        attachment.asynchronousServerSocketChannel.accept(attachment, this);
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-        result.read(buffer,buffer,new ReadCompletionHandler());
+        result.read(buffer, buffer, new ReadCompletionHandler(result));
     }
 
     @Override
