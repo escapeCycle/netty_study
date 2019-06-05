@@ -14,8 +14,8 @@ dependencies {
 
     compile (
             "io.netty:netty-all:4.1.15.Final",
-            "net.spals.shaded:protobuf-java:3.3.1",
-            "com.google.protobuf:protobuf-java-util:3.3.1",
+            "net.spals.shaded:protobuf-java:3.8.0",
+            "com.google.protobuf:protobuf-java-util:3.8.0",
             "junit:junit:4.12",
             "org.mockito:mockito-core:2.+",
             "org.slf4j:slf4j-api:1.7.10",

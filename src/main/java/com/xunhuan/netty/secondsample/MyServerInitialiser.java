@@ -25,4 +25,11 @@ public class MyServerInitialiser extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
         pipeline.addLast(new MyServerHandler());
     }
+
+    public static void main(String[] args) {
+        System.out.println("a" + System.getProperty("line.separator") + "b");
+        System.out.println("line.separator".equalsIgnoreCase("line.separator\n"));
+        System.out.println("line.separator\n" + "cc");
+
+    }
 }
