@@ -10,6 +10,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 /**
  * 文件传输服务器  通过命令行  telnet localhost 8899
  * 输入: C:\\Users\\DELL\\Desktop\\a.txt
+ *
+ * 此处使用FileRegion 类进行传输
+ * 如果是大文件,为了防止内存溢出可以使用ChunkedWriteHandler
  * @Auther: tianhuan
  * @Date: 2019/6/10 15:40
  * @Description:
