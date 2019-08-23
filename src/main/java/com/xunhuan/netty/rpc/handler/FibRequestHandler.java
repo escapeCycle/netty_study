@@ -26,6 +26,6 @@ public class FibRequestHandler implements IMessageHandler<Integer> {
             fibs.add(value);
         }
         //输出
-        ctx.writeAndFlush(new MessageOutput(requestId,"fib_type",fibs.get(message)));
+        ctx.writeAndFlush(new MessageOutput(requestId,"fib_res",fibs.get(message)));
     }
 }

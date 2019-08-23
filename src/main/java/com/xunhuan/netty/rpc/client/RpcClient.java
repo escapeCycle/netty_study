@@ -17,10 +17,12 @@ public class RpcClient {
     private Socket sock;
     private DataInputStream input;
     private OutputStream output;
+
     public RpcClient(String ip, int port) {
         this.ip = ip;
         this.port = port;
     }
+
     public void connect() throws IOException {
         SocketAddress addr = new InetSocketAddress(ip, port);
         sock = new Socket();
@@ -28,6 +30,7 @@ public class RpcClient {
         input = new DataInputStream(sock.getInputStream());
         output = sock.getOutputStream();
     }
+
     public void close() {
         // 关闭链接
         try {
@@ -38,6 +41,7 @@ public class RpcClient {
         } catch (IOException e) {
         }
     }
+
     public Object send(String type, Object payload) {
         // 普通rpc请求，正常获取响应
         try {
@@ -46,11 +50,13 @@ public class RpcClient {
             throw new RPCException(e);
         }
     }
+
     public RpcClient rpc(String type, Class<?> clazz) {
         // rpc响应类型注册快捷入口
         ResponseRegistry.register(type, clazz);
         return this;
     }
+
     public void cast(String type, Object payload) {
         // 单向消息，服务器不得返回结果
         try {
@@ -59,6 +65,7 @@ public class RpcClient {
             throw new RPCException(e);
         }
     }
+
     private Object sendInternal(String type, Object payload, boolean cast) throws IOException {
         if (output == null) {
             connect();
@@ -101,12 +108,14 @@ public class RpcClient {
         }
         return null;
     }
+
     private String readStr() throws IOException {
         int len = input.readInt();
         byte[] bytes = new byte[len];
         input.readFully(bytes);
         return new String(bytes, Charsets.UTF_8);
     }
+
     private void writeStr(DataOutputStream out, String s) throws IOException {
         out.writeInt(s.length());
         out.write(s.getBytes(Charsets.UTF_8));

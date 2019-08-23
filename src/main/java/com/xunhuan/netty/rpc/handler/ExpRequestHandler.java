@@ -23,6 +23,6 @@ public class ExpRequestHandler implements IMessageHandler<ExpRequest> {
         }
 
         long end  = System.nanoTime();
-        ctx.writeAndFlush(new MessageOutput(requestId,"exp_type",new ExpReponse(res,end-start)));
+        ctx.writeAndFlush(new MessageOutput(requestId,"exp_res",new ExpReponse(res,end-start)));
     }
 }
